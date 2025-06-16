@@ -3,6 +3,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.lucamiras.tandemai.screens.HomeScreen
+import com.lucamiras.tandemai.screens.NewPartnerScreen
+import com.lucamiras.tandemai.screens.PartnerScreen
 import com.lucamiras.tandemai.screens.ProfileScreen
 import com.lucamiras.tandemai.screens.TestScreen
 
@@ -17,8 +19,14 @@ fun AppNavigation() {
         composable("testScreen") {
             TestScreen(navController = navController)
         }
-        composable("ProfileScreen") {
+        composable("profileScreen") {
             ProfileScreen(navController = navController)
+        }
+        composable("partnerScreen") {
+            PartnerScreen(navController = navController)
+        }
+        composable("newPartnerScreen") {
+            NewPartnerScreen(navController = navController)
         }
     }
 }

@@ -17,23 +17,22 @@ import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Alignment.Companion.Center
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.lucamiras.tandemai.ui.elements.Greeting
 import com.lucamiras.tandemai.ui.elements.GridCard
+import com.lucamiras.tandemai.ui.elements.GridCardData
 
 
 @Composable
 fun HomeScreen(navController: NavController) {
-    val cardItems = listOf<GridCard>(
-        GridCard("New chat", Icons.Filled.AddCircle, "testScreen"),
-        GridCard("Existing chats", Icons.Filled.Email, "testScreen"),
-        GridCard("Partners", Icons.Filled.Face, "testScreen"),
-        GridCard("Profile", Icons.Filled.AccountCircle, "profileScreen"),
+    val cardItems = listOf<GridCardData>(
+        GridCardData("New chat", Icons.Filled.AddCircle, "testScreen"),
+        GridCardData("Existing chats", Icons.Filled.Email, "testScreen"),
+        GridCardData("Partners", Icons.Filled.Face, "partnerScreen"),
+        GridCardData("Profile", Icons.Filled.AccountCircle, "profileScreen"),
     )
     Scaffold (
         bottomBar = {
