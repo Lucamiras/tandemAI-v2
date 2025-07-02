@@ -18,17 +18,18 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.lucamiras.tandemai.data.DBPartner
 import com.lucamiras.tandemai.data.Language
 
 
-data class Partner(
+data class PartnerObj(
     val name: String,
     val language: Language,
 )
 
 @Composable
 fun PartnerCard(
-    partner: Partner
+    partner: DBPartner
 ) {
     Card(
         shape = CardDefaults.shape,
@@ -54,7 +55,7 @@ fun PartnerCard(
                 modifier = Modifier
                     .padding(horizontal = 10.dp)
             ) {
-                Text(partner.name, fontWeight = FontWeight.Bold)
+                Text(partner.firstName, fontWeight = FontWeight.Bold)
                 Text(partner.language.name, fontWeight = FontWeight.Normal)
             }
         }

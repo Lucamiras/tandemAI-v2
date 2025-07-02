@@ -29,17 +29,22 @@ import androidx.navigation.compose.rememberNavController
 import com.lucamiras.tandemai.screens.HomeScreen
 import com.lucamiras.tandemai.screens.TestScreen
 import com.lucamiras.tandemai.ui.theme.TandemAITheme
+import android.app.Application
+import android.content.Context
+import com.lucamiras.tandemai.viewModels.PartnerViewModel
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val appContext: Context = this
+        val partnerViewModel = PartnerViewModel(context = appContext)
         setContent {
             TandemAITheme { // Apply your app's theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    AppNavigation()
+                    AppNavigation(appContext, partnerViewModel)
                 }
             }
         }

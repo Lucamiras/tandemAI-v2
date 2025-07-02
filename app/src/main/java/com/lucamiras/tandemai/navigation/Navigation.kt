@@ -1,4 +1,7 @@
+import android.content.Context
+import android.provider.Telephony.Mms.Part
 import androidx.compose.runtime.Composable
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -7,9 +10,11 @@ import com.lucamiras.tandemai.screens.NewPartnerScreen
 import com.lucamiras.tandemai.screens.PartnerScreen
 import com.lucamiras.tandemai.screens.ProfileScreen
 import com.lucamiras.tandemai.screens.TestScreen
+import com.lucamiras.tandemai.viewModels.PartnerViewModel
+
 
 @Composable
-fun AppNavigation() {
+fun AppNavigation(appContext: Context, partnerViewModel: PartnerViewModel) {
     val navController = rememberNavController() // Create and remember the NavController
 
     NavHost(navController = navController, startDestination = "mainScreen") {
@@ -23,10 +28,10 @@ fun AppNavigation() {
             ProfileScreen(navController = navController)
         }
         composable("partnerScreen") {
-            PartnerScreen(navController = navController)
+            PartnerScreen(navController = navController, partnerViewModel = partnerViewModel)
         }
         composable("newPartnerScreen") {
-            NewPartnerScreen(navController = navController)
+            NewPartnerScreen(navController = navController, partnerViewModel = partnerViewModel)
         }
     }
 }
