@@ -1,4 +1,4 @@
-package com.lucamiras.tandemai.screens
+package com.lucamiras.tandemai.ui.screens
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -51,7 +51,7 @@ fun HomeScreen(navController: NavController) {
                 .fillMaxSize()
                 .padding(innerPadding)
         ) {
-            Greeting(name = "User")
+            Greeting(name = "Lucas")
             LazyVerticalGrid(
                 columns = GridCells.Fixed(2),
                 modifier = Modifier

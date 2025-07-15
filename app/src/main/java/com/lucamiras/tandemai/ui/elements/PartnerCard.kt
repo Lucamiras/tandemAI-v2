@@ -8,10 +8,14 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardColors
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -58,7 +62,7 @@ fun PartnerCard(
                 modifier = Modifier
                     .padding(horizontal = 10.dp)
             ) {
-                Text(partner.firstName, fontWeight = FontWeight.Bold)
+                Text(partner.name, fontWeight = FontWeight.Bold)
                 Text(partner.language.name, fontWeight = FontWeight.Normal)
             }
             Column (
@@ -68,9 +72,18 @@ fun PartnerCard(
                 horizontalAlignment = Alignment.End
             ) {
                 Button (
-                    onClick = { partnerViewModel.deletePartner(partner) }
+                    onClick = { partnerViewModel.deletePartner(partner) },
+                    colors = ButtonColors(
+                        contentColor = Color.White,
+                        containerColor = Color.Red,
+                        disabledContainerColor = Color.Black,
+                        disabledContentColor = Color.White
+                    )
                 ) {
-                    Text("Delete")
+                    Row {
+                        Icon(imageVector = Icons.Filled.Delete, contentDescription = "Delete")
+                    }
+
                 }
             }
         }

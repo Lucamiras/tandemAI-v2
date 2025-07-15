@@ -1,4 +1,4 @@
-package com.lucamiras.tandemai.screens
+package com.lucamiras.tandemai.ui.screens
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box

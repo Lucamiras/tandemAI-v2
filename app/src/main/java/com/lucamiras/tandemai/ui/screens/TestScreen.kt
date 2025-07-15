@@ -1,4 +1,4 @@
-package com.lucamiras.tandemai.screens
+package com.lucamiras.tandemai.ui.screens
 
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable

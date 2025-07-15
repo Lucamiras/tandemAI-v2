@@ -1,20 +1,17 @@
 import android.content.Context
-import android.provider.Telephony.Mms.Part
 import androidx.compose.runtime.Composable
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.lucamiras.tandemai.screens.HomeScreen
-import com.lucamiras.tandemai.screens.NewPartnerScreen
-import com.lucamiras.tandemai.screens.PartnerScreen
-import com.lucamiras.tandemai.screens.ProfileScreen
-import com.lucamiras.tandemai.screens.TestScreen
-import com.lucamiras.tandemai.viewModels.PartnerViewModel
+import com.lucamiras.tandemai.ui.screens.HomeScreen
+import com.lucamiras.tandemai.ui.screens.NewPartnerScreen
+import com.lucamiras.tandemai.ui.screens.PartnerScreen
+import com.lucamiras.tandemai.ui.screens.ProfileScreen
+import com.lucamiras.tandemai.ui.screens.TestScreen
 
 
 @Composable
-fun AppNavigation(appContext: Context, partnerViewModel: PartnerViewModel) {
+fun AppNavigation(appContext: Context) {
     val navController = rememberNavController() // Create and remember the NavController
 
     NavHost(navController = navController, startDestination = "mainScreen") {
@@ -28,10 +25,10 @@ fun AppNavigation(appContext: Context, partnerViewModel: PartnerViewModel) {
             ProfileScreen(navController = navController)
         }
         composable("partnerScreen") {
-            PartnerScreen(navController = navController, partnerViewModel = partnerViewModel)
+            PartnerScreen(navController = navController)
         }
         composable("newPartnerScreen") {
-            NewPartnerScreen(navController = navController, partnerViewModel = partnerViewModel)
+            NewPartnerScreen(navController = navController)
         }
     }
 }
