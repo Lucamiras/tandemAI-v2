@@ -15,37 +15,23 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
-import androidx.room.Room
-import android.content.Context
-import android.os.AsyncTask
-import android.util.Log
 import androidx.compose.runtime.State
 import androidx.compose.runtime.collectAsState
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import androidx.lifecycle.viewmodel.compose.viewModel
-import com.lucamiras.tandemai.data.AppDatabase
-import com.lucamiras.tandemai.data.DBPartner
-
-import com.lucamiras.tandemai.data.Language
-import com.lucamiras.tandemai.data.PartnerDao
+import androidx.compose.runtime.getValue
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.navigation.NavController
+import com.lucamiras.tandemai.data.local.Partner
 import com.lucamiras.tandemai.ui.elements.PartnerCard
-import com.lucamiras.tandemai.ui.elements.PartnerObj
 import com.lucamiras.tandemai.viewModels.PartnerViewModel
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.launch
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PartnerScreen(navController: NavController, partnerViewModel: PartnerViewModel) {
 
-    val partnerList: State<List<DBPartner>> = partnerViewModel.partners.collectAsState()
+    val partners by partnerViewModel.allPartners.collectAsStateWithLifecycle()
 
     Scaffold(
         topBar = { TopAppBar(
@@ -57,9 +43,10 @@ fun PartnerScreen(navController: NavController, partnerViewModel: PartnerViewMod
                 modifier = Modifier
                     .padding(innerPadding)
             ) {
-                items(partnerList.value) { item ->
+                items(partners) { item ->
                     PartnerCard(
                         partner = item,
+                        partnerViewModel= partnerViewModel
                     )
                 }
             }

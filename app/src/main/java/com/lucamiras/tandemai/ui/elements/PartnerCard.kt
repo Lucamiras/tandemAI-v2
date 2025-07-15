@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardColors
 import androidx.compose.material3.CardDefaults
@@ -18,8 +19,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import com.lucamiras.tandemai.data.DBPartner
+import com.lucamiras.tandemai.data.local.Partner
 import com.lucamiras.tandemai.data.Language
+import com.lucamiras.tandemai.viewModels.PartnerViewModel
 
 
 data class PartnerObj(
@@ -29,7 +31,8 @@ data class PartnerObj(
 
 @Composable
 fun PartnerCard(
-    partner: DBPartner
+    partner: Partner,
+    partnerViewModel: PartnerViewModel
 ) {
     Card(
         shape = CardDefaults.shape,
@@ -57,6 +60,18 @@ fun PartnerCard(
             ) {
                 Text(partner.firstName, fontWeight = FontWeight.Bold)
                 Text(partner.language.name, fontWeight = FontWeight.Normal)
+            }
+            Column (
+                modifier = Modifier
+                    .padding(horizontal = 10.dp)
+                    .fillMaxWidth(),
+                horizontalAlignment = Alignment.End
+            ) {
+                Button (
+                    onClick = { partnerViewModel.deletePartner(partner) }
+                ) {
+                    Text("Delete")
+                }
             }
         }
     }
